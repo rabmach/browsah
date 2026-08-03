@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# browsah - Helium launcher
+# Disables Google's Optimization Guide services (hint fetch + model downloads).
+# Drop this on PATH (e.g. ~/bin/helium) so it shadows the real binary,
+# or symlink it. All args pass through, e.g. --password-store=basic.
+HELIUM="$(command -v helium || true)"
+[ -n "$HELIUM" ] || HELIUM="/usr/bin/helium"
+exec "$HELIUM" --disable-features=OptimizationGuideModelDownloads,OptimizationHints "$@"
