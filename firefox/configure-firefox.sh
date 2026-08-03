@@ -87,6 +87,12 @@ echo "  ✓ backup made (prefs.js.browsah-* / user.js.browsah-*)"
 echo "  Next launch, Firefox applies these. (about:config changes revert on"
 echo "  restart - edit $DIR/user.js instead to keep them.)"
 
+# Default search -> DuckDuckGo (lives in search.json.mozlz4 since FF128).
+if [ -f "$PROFILE/search.json.mozlz4" ]; then
+  cp -a "$PROFILE/search.json.mozlz4" "$PROFILE/search.json.mozlz4.browsah-$(date +%Y%m%d-%H%M%S)"
+fi
+python3 "$DIR/search.py" "$PROFILE" || echo "  !! could not set DuckDuckGo as default"
+
 # RAM cache lives on /mnt/ramdisk - make sure it exists (and is a real tmpfs).
 RAMDIR=/mnt/ramdisk
 if ! mountpoint -q "$RAMDIR" 2>/dev/null; then

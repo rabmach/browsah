@@ -119,5 +119,72 @@ user_pref("browser.safebrowsing.phishing.enabled", false);
 // if the mount isn't actually tmpfs). Leaves no cache trace on the SSD.
 user_pref("browser.cache.disk.parent_directory", "/mnt/ramdisk/firefox_cache");
 
+/**********************************************************************
+ * 12. LOOK & FEEL
+ **********************************************************************/
+// Vertical tabs (new tabstrip in the sidebar).
+user_pref("browser.tabs.vertical_tabs.enabled", true);
+
+// Dark everywhere. (Yes, it's fingerprintable. No, we don't care.)
+user_pref("browser.theme.content-theme", "dark");
+user_pref("browser.theme.toolbar-theme", "dark");
+user_pref("ui.systemUsesDarkTheme", 1);
+
+// Don't nag when closing the window via Ctrl+Q.
+user_pref("browser.warnOnQuitShortcut", false);
+
+// Minimum readable font size; pages still get to choose their own fonts.
+user_pref("browser.display.min_font_size", 10);
+user_pref("browser.display.use_system_font", false);
+
+/**********************************************************************
+ * 13. SEARCH ENGINE - DuckDuckGo
+ * Since Firefox 128 the default engine lives in search.json.mozlz4, not
+ * in a pref. configure-firefox.sh patches that file (and its verification
+ * hash) so the default becomes DuckDuckGo for normal and private windows.
+ **********************************************************************/
+
+/**********************************************************************
+ * 14. AI / ML - ALL OFF
+ * Chatbot, link previews, smart tab groups, PDF alt-text, visual search,
+ * model downloads, the "Smart Window". Nothing local, nothing remote.
+ **********************************************************************/
+user_pref("browser.ml.enable", false);
+user_pref("browser.ai.control.default", "blocked");
+user_pref("browser.ml.modelHubRootUrl", "");
+user_pref("browser.ml.chat.enabled", false);
+user_pref("browser.ml.chat.provider", "");
+user_pref("browser.ml.chat.sidebar", false);
+user_pref("browser.ml.chat.menu", false);
+user_pref("browser.ml.chat.page", false);
+user_pref("browser.ml.chat.shortcuts", false);
+user_pref("browser.ml.chat.page.footerBadge", false);
+user_pref("browser.ml.chat.page.menuBadge", false);
+user_pref("browser.ai.control.sidebarChatbot", "blocked");
+user_pref("extensions.ml.enabled", false);
+user_pref("browser.ml.linkPreview.enabled", false);
+user_pref("browser.ai.control.linkPreviewKeyPoints", "blocked");
+user_pref("browser.ml.pageAssist.enabled", false);
+user_pref("browser.ml.smartAssist.enabled", false);
+user_pref("browser.tabs.groups.smart.enabled", false);
+user_pref("browser.tabs.groups.smart.userEnabled", false);
+user_pref("browser.ai.control.smartTabGroups", "blocked");
+user_pref("browser.ai.control.translations", "blocked");
+user_pref("browser.ai.control.pdfjsAltText", "blocked");
+user_pref("pdfjs.enableAltText", false);
+user_pref("pdfjs.enableAltTextModelDownload", false);
+user_pref("pdfjs.enableGuessAltText", false);
+user_pref("browser.search.visualSearch.featureGate", false);
+user_pref("browser.urlbar.quicksuggest.mlEnabled", false);
+user_pref("places.semanticHistory.featureGate", false);
+user_pref("browser.aiwindow.enabled", false);
+user_pref("browser.aiwindow.preferences.enabled", false);
+user_pref("browser.aiwindow.memories", false);
+
+// "Remote improvements" - automatic fixes/feature changes pushed between
+// updates. That's Norman(y)-adjacent; off. (Still get regular monthly
+// updates - just no live re-engineering of the browser.)
+user_pref("nimbus.rollouts.enabled", false);
+
 // Privacy is a lifestyle, not a setting.
 // Do NOT sign into a Firefox Account / Sync while using this config.

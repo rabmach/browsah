@@ -41,8 +41,10 @@ Both scripts:
     install.sh                  menu entry point (firefox | helium | all)
     firefox/
       user.js                   the whole Firefox hardening, documented section-by-section
-      configure-firefox.sh      detect profile, back up, install user.js, ramdisk check,
-                                prompt for extensions
+      search.py                 sets DuckDuckGo as default (patches search.json.mozlz4 +
+                                recomputes Firefox's tamper-detection hash)
+      configure-firefox.sh      detect profile, back up, install user.js, DDG default,
+                                ramdisk check, prompt for extensions
     helium/
       helium                    launcher wrapper -> --disable-features=OptimizationGuideModelDownloads,OptimizationHints
       configure-helium.sh       patch Preferences + Local State, install wrapper, prompt for extensions
@@ -66,6 +68,18 @@ Both scripts:
 11. Disk cache lives on a tmpfs ramdisk (`/mnt/ramdisk/firefox_cache`), so no
     cache trace survives a reboot. Installer warns if the mount is missing or
     isn't actually tmpfs.
+12. Look & feel: vertical tabs, dark theme, no Ctrl+Q "are you sure" nag,
+    minimum font size 10 (pages still pick their own fonts).
+13. Default search engine set to DuckDuckGo (normal + private windows) by
+    patching `search.json.mozlz4` — the default stopped being a plain pref in
+    Firefox 128. The tamper-detection hash is recomputed exactly as Firefox
+    computes it, so the change survives restarts.
+14. **AI/ML: everything off.** Chatbot sidebar, link-preview key points, smart
+    tab groups, PDF alt-text generation, visual search, model downloads
+    (`browser.ml.*`, `browser.ai.*`, `browser.aiwindow.*`). Also **remote
+    improvements** disabled (`nimbus.rollouts.enabled = false`) — Firefox
+    stops live-patching features between updates; you still get regular
+    monthly releases.
 
 **Helium (`helium/configure-helium.sh`)**
 - `network_prediction_options = 0` (no speculative networking).
