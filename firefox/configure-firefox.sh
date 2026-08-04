@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# browsah - Firefox privacy installer
+# browsah - Firefox privacy installer 2026 machiner opencode
 # Applies firefox/user.js to a Firefox profile and opens the extension pages.
 #
 #   usage: ./configure-firefox.sh [profile-directory]
@@ -45,9 +45,7 @@ PY
 }
 # ---------------------------------------------------------------------------
 banner() {
-  echo "  █▀▄ █▀█ █▀█ █▀ █ █ ▀█▀ █ █ █"
-  echo "  █▄▀ █▀█ ▀▀█ ▄█ ▀▄▀  █  █▀█ █"
-  echo "  Firefox privacy installer"
+  echo "  Firefox privacy bump"
   echo
 }
 
@@ -129,4 +127,4 @@ ask "Multi-Account Containers"       "https://addons.mozilla.org/firefox/addon/m
 ask "KeePassXC-Browser"              "https://addons.mozilla.org/firefox/addon/keepassxc-browser/"
 
 echo
-echo "  Done. Enjoy not being remembered."
+echo "  Done. Enjoy."

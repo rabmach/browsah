@@ -14,9 +14,7 @@ PREFS="$BASE/Default/Preferences"
 LSTATE="$BASE/Local State"
 
 banner() {
-  echo "  █▄░█ █▀▀ █░░ █ █ █ ▀█▀ █ █ █"
-  echo "  █░▀█ ██▄ █▄▄ █▀█ █  █  █▀█ █"
-  echo "  Helium privacy installer"
+  echo "  Helium privacy bump"
   echo
 }
 
@@ -102,4 +100,4 @@ ask "ClearURLs"          "https://chromewebstore.google.com/detail/ckekelcjdfoaj
 ask "SponsorBlock"       "https://chromewebstore.google.com/detail/mnjggcdmjocbbbhaepdhwhcgehohmoig"
 
 echo
-echo "  Done. Enjoy not being remembered."
+echo "  Done. Enjoy."
