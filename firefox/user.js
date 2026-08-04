@@ -123,7 +123,16 @@ user_pref("browser.cache.disk.parent_directory", "/mnt/ramdisk/firefox_cache");
  * 12. LOOK & FEEL
  **********************************************************************/
 // Vertical tabs (new tabstrip in the sidebar).
-user_pref("browser.tabs.vertical_tabs.enabled", true);
+// FF135+ moved this behind the sidebar revamp; browser.tabs.vertical_tabs.enabled
+// is dead on current builds.
+user_pref("sidebar.revamp", true);
+user_pref("sidebar.verticalTabs", true);
+
+// Ctrl+Tab cycles through tabs in recently-used order.
+user_pref("browser.ctrlTab.recentlyUsedOrder", true);
+
+// New-tab page: no Firefox logo/wordmark.
+user_pref("browser.newtabpage.activity-stream.logowordmark.alwaysVisible", false);
 
 // Dark everywhere. (Yes, it's fingerprintable. No, we don't care.)
 user_pref("browser.theme.content-theme", "dark");

@@ -91,6 +91,9 @@ if [ -f "$PROFILE/search.json.mozlz4" ]; then
 fi
 python3 "$DIR/search.py" "$PROFILE" || echo "  !! could not set DuckDuckGo as default"
 
+# Search bar at the right of the toolbar, after a flexible space.
+python3 "$DIR/ui.py" "$PROFILE" || echo "  !! could not position the search bar in the toolbar"
+
 # RAM cache lives on /mnt/ramdisk - make sure it exists (and is a real tmpfs).
 RAMDIR=/mnt/ramdisk
 if ! mountpoint -q "$RAMDIR" 2>/dev/null; then

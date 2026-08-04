@@ -43,8 +43,10 @@ Both scripts:
       user.js                   the whole Firefox hardening, documented section-by-section
       search.py                 sets DuckDuckGo as default (patches search.json.mozlz4 +
                                 recomputes Firefox's tamper-detection hash)
+      ui.py                     puts the search bar at the right of the toolbar, after a
+                                flexible space (patches browser.uiCustomization.state)
       configure-firefox.sh      detect profile, back up, install user.js, DDG default,
-                                ramdisk check, prompt for extensions
+                                search-bar placement, ramdisk check, prompt for extensions
     helium/
       helium                    launcher wrapper -> --disable-features=OptimizationGuideModelDownloads,OptimizationHints
       configure-helium.sh       patch Preferences + Local State, install wrapper, prompt for extensions
@@ -69,7 +71,10 @@ Both scripts:
     cache trace survives a reboot. Installer warns if the mount is missing or
     isn't actually tmpfs.
 12. Look & feel: vertical tabs, dark theme, no Ctrl+Q "are you sure" nag,
-    minimum font size 10 (pages still pick their own fonts).
+    minimum font size 10 (pages still pick their own fonts). No Firefox
+    logo on the new-tab page. Ctrl+Tab cycles tabs in recently-used order.
+    The search bar sits at the right of the toolbar, after a flexible
+    space (enforced by `ui.py` on the saved `browser.uiCustomization.state`).
 13. Default search engine set to DuckDuckGo (normal + private windows) by
     patching `search.json.mozlz4` — the default stopped being a plain pref in
     Firefox 128. The tamper-detection hash is recomputed exactly as Firefox
