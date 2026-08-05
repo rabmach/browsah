@@ -138,6 +138,9 @@ user_pref("browser.cache.disk.parent_directory", "/mnt/ramdisk/firefox_cache");
 // is dead on current builds.
 user_pref("sidebar.revamp", true);
 user_pref("sidebar.verticalTabs", true);
+// Auto-hide: tab bar collapses to a slim icon rail and expands on hover
+// (or when the toolbar's sidebar button is clicked to pin it open).
+user_pref("sidebar.visibility", "expand-on-hover");
 
 // Ctrl+Tab cycles through tabs in recently-used order.
 user_pref("browser.ctrlTab.recentlyUsedOrder", true);

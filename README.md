@@ -75,7 +75,8 @@ Both scripts:
 11. Disk cache lives on a tmpfs ramdisk (`/mnt/ramdisk/firefox_cache`), so no
     cache trace survives a reboot. Installer warns if the mount is missing or
     isn't actually tmpfs.
-12. Look & feel: vertical tabs, dark theme, no Ctrl+Q "are you sure" nag,
+12. Look & feel: vertical tabs that auto-hide to a slim icon rail and
+    expand on hover, dark theme, no Ctrl+Q "are you sure" nag,
     minimum font size 10 (pages still pick their own fonts). No Firefox
     logo on the new-tab page. Ctrl+Tab cycles tabs in recently-used order.
     Bookmarks open in tabs; middle-click opens links in a background tab.
