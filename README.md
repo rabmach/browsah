@@ -34,7 +34,7 @@ Both scripts:
 2. Back up everything they touch (`*.browsah-<timestamp>`).
 3. Apply the hardening.
 4. Open the recommended extension pages for a one-click install each.
-5. End with "Enjoy not being remembered."
+5. End with "Done. Enjoy."
 
 ## File layout
 

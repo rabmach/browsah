@@ -171,7 +171,7 @@ user_pref("browser.display.use_system_font", false);
 /**********************************************************************
  * 14. AI / ML - ALL OFF
  * Chatbot, link previews, smart tab groups, PDF alt-text, visual search,
- * model downloads, the "Smart Window". Nothing local, nothing remote.
+ * model downloads. Nothing local, nothing remote.
  **********************************************************************/
 user_pref("browser.ml.enable", false);
 user_pref("browser.ai.control.default", "blocked");
