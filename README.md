@@ -1,8 +1,9 @@
 # browsah
 
-Portable browser-privacy hardening, applied in one command. Built for the
-author's own rig, shared in the hope that a couple of distro maintainers read
-the README and steal the good bits.
+Portable browser-privacy hardening, applied in one command. This is
+essentially for me — for those times I must start with a fresh Firefox — but
+shared in the hope that a couple of distro maintainers read the README and
+steal the good bits.
 
 Targets:
 
@@ -136,3 +137,7 @@ rename the backup back.
 ## License
 
 Do whatever you want with it — it's config and shell, steal it all.
+
+## Nothing new here
+
+This is a personal config, not a discovery. [Betterfox](https://github.com/yokoffing/Betterfox) and [arkenfox/user.js](https://github.com/arkenfox/user.js) do the user.js side of this better, with far more scrutiny and upstream maintenance — if you're choosing one to adopt, pick theirs. Use this repo if you want exactly these opinionated settings and a one-command installer.
