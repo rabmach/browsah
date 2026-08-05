@@ -30,7 +30,6 @@ user_pref("network.trr.mode", 3);                       // 3 = DoH only
 user_pref("network.trr.uri", "https://firefox.dns.nextdns.io/");
 user_pref("network.trr.excluded-domains", "");          // no bypasses
 user_pref("network.dns.disablePrefetch", true);
-user_pref("network.dns.disableIPv6", true);
 
 /**********************************************************************
  * 3. UNASKED-FOR CONNECTIONS
@@ -190,7 +189,6 @@ user_pref("extensions.ml.enabled", false);
 user_pref("browser.ml.linkPreview.enabled", false);
 user_pref("browser.ai.control.linkPreviewKeyPoints", "blocked");
 user_pref("browser.ml.pageAssist.enabled", false);
-user_pref("browser.ml.smartAssist.enabled", false);
 user_pref("browser.tabs.groups.smart.enabled", false);
 user_pref("browser.tabs.groups.smart.userEnabled", false);
 user_pref("browser.ai.control.smartTabGroups", "blocked");
@@ -202,9 +200,6 @@ user_pref("pdfjs.enableGuessAltText", false);
 user_pref("browser.search.visualSearch.featureGate", false);
 user_pref("browser.urlbar.quicksuggest.mlEnabled", false);
 user_pref("places.semanticHistory.featureGate", false);
-user_pref("browser.aiwindow.enabled", false);
-user_pref("browser.aiwindow.preferences.enabled", false);
-user_pref("browser.aiwindow.memories", false);
 
 // "Remote improvements" - automatic fixes/feature changes pushed between
 // updates. That's Norman(y)-adjacent; off. (Still get regular monthly

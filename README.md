@@ -57,7 +57,7 @@ Both scripts:
 1. Telemetry / health reports / usage ping off; Shield + Normandy disabled
    (no remote experiments, no pref-flipping, empty Normandy API URL).
 2. DNS over HTTPS, mode 3 (strict — no plain-DNS fallback), NextDNS endpoint,
-   no excluded domains, DNS prefetch off, IPv6 off.
+   no excluded domains, DNS prefetch off.
 3. No speculative/prefetch/preconnect traffic; no search suggestions.
 4. Global Privacy Control on; ETP standard; fingerprinting protection on,
    first-party isolation on; sites can't read clipboard events; shutdown
@@ -86,7 +86,7 @@ Both scripts:
     computes it, so the change survives restarts.
 14. **AI/ML: everything off.** Chatbot sidebar, link-preview key points, smart
     tab groups, PDF alt-text generation, visual search, model downloads
-    (`browser.ml.*`, `browser.ai.*`, `browser.aiwindow.*`). Also **remote
+    (`browser.ml.*`, `browser.ai.*`). Also **remote
     improvements** disabled (`nimbus.rollouts.enabled = false`) — Firefox
     stops live-patching features between updates; you still get regular
     monthly releases.
