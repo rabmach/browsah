@@ -59,9 +59,13 @@ Both scripts:
 2. DNS over HTTPS, mode 3 (strict — no plain-DNS fallback), NextDNS endpoint,
    no excluded domains, DNS prefetch off, IPv6 off.
 3. No speculative/prefetch/preconnect traffic; no search suggestions.
-4. Global Privacy Control on; ETP standard; shutdown sanitization.
+4. Global Privacy Control on; ETP standard; fingerprinting protection on,
+   first-party isolation on; sites can't read clipboard events; shutdown
+   sanitization.
+
 5. New-tab page: no sponsored top sites, no discovery stream, no CFR nudges.
-6. Search: no suggestions, no query echo in the address bar.
+6. Search: no suggestions, no query echo in the address bar; search results
+   open in a new tab.
 7. No saved passwords, no password generation, no breach alerts, no Firefox
    Relay, no form autofill (use KeePassXC-Browser instead).
 8. HTTPS-only mode.
@@ -73,6 +77,7 @@ Both scripts:
 12. Look & feel: vertical tabs, dark theme, no Ctrl+Q "are you sure" nag,
     minimum font size 10 (pages still pick their own fonts). No Firefox
     logo on the new-tab page. Ctrl+Tab cycles tabs in recently-used order.
+    Bookmarks open in tabs; middle-click opens links in a background tab.
     The search bar sits at the right of the toolbar, after a flexible
     space (enforced by `ui.py` on the saved `browser.uiCustomization.state`).
 13. Default search engine set to DuckDuckGo (normal + private windows) by

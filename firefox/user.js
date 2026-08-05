@@ -50,6 +50,15 @@ user_pref("privacy.globalprivacycontrol.enabled", true);
 // more (including some fingerprinters). Pick what breaks nothing.
 user_pref("browser.contentblocking.category", "standard");
 
+// Fingerprinting protection (on top of the ETP level above).
+user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
+
+// First-party isolation: no cross-domain cookie/storage sharing.
+user_pref("privacy.firstparty.isolate", true);
+
+// No clipboard read events for sites (pasting still works; reading is blocked).
+user_pref("dom.event.clipboardevents.enabled", false);
+
 // GPC + tracking protection exceptions stay off (no silent "allowed" list).
 // user_pref("privacy.trackingprotection.allow_list", "");
 
@@ -79,6 +88,9 @@ user_pref("browser.urlbar.suggest.recentsearches", false);
 user_pref("browser.urlbar.suggest.topsites", false);
 user_pref("browser.urlbar.suggest.trending", false);
 user_pref("browser.urlbar.showSearchSuggestionsFirst", false);
+
+// Open search results in a new tab instead of the same tab.
+user_pref("browser.search.openintab", true);
 
 /**********************************************************************
  * 7. PASSWORDS & FORMS - don't let the browser remember you
@@ -134,7 +146,11 @@ user_pref("browser.ctrlTab.recentlyUsedOrder", true);
 // New-tab page: no Firefox logo/wordmark.
 user_pref("browser.newtabpage.activity-stream.logowordmark.alwaysVisible", false);
 
-// Dark everywhere. (Yes, it's fingerprintable. No, we don't care.)
+// Bookmarks open in tabs; middle-click opens links in a background tab.
+user_pref("browser.tabs.loadBookmarksInTabs", true);
+user_pref("browser.tabs.loadBookmarksInBackground", true);
+user_pref("browser.tabs.opentabfor.middleclick", true);
+
 user_pref("browser.theme.content-theme", "dark");
 user_pref("browser.theme.toolbar-theme", "dark");
 user_pref("ui.systemUsesDarkTheme", 1);
