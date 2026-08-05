@@ -116,9 +116,11 @@ disclosure tiny, and it catches brand-new phishing URLs that static lists
 
 - **Run each browser once first.** Helium's installer needs an existing
   profile; Firefox's needs `profiles.ini` (both created on first launch).
-- **Extensions need one click each.** The scripts open the addon pages; the
-  browser refuses silent installs by design. uBlock Origin for Firefox,
-  ClearURLs, SponsorBlock, Multi-Account Containers, KeePassXC-Browser.
+- **Extensions need one click each.** The scripts open the addon pages for
+  extensions not already in the profile's `extensions/` folder (already-
+  installed ones are skipped); the browser refuses silent installs by design.
+  uBlock Origin for Firefox, ClearURLs, SponsorBlock, Multi-Account
+  Containers, KeePassXC-Browser.
 - **`~/bin` must precede the browser's directory on `PATH`** for the Helium
   wrapper to take effect. The installer detects and warns.
 - **Do NOT sign into a Firefox Account / Sync** while using this config —

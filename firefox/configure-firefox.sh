@@ -114,8 +114,20 @@ fi
 # ---------------------------------------------------------------------------
 echo
 echo "  Recommended extensions (privacy stack):"
+
+# An extension counts as installed if its ID (dir name or .xpi) is in the
+# profile's extensions/ folder, so we don't nag about what's already there.
+ext_installed() {
+  local extdir="$PROFILE/extensions" id="$1"
+  [ -d "$extdir" ] && { [ -e "$extdir/$id" ] || [ -e "$extdir/$id.xpi" ]; }
+}
+
 ask() {
-  local name="$1" url="$2"
+  local name="$1" url="$2" id="$3"
+  if ext_installed "$id"; then
+    echo "  ✓ ${name} already installed - skipped"
+    return 0
+  fi
   read -rp "  Open page for ${name}? [Y/n] " ans
   case "${ans:-y}" in
     y|Y|"") xdg-open "$url" >/dev/null 2>&1 || true ;;
@@ -123,11 +135,11 @@ ask() {
   esac
 }
 
-ask "uBlock Origin"                  "https://addons.mozilla.org/firefox/addon/ublock-origin/"
-ask "ClearURLs"                      "https://addons.mozilla.org/firefox/addon/clearurls/"
-ask "SponsorBlock"                   "https://addons.mozilla.org/firefox/addon/sponsorblock/"
-ask "Multi-Account Containers"       "https://addons.mozilla.org/firefox/addon/multi-account-containers/"
-ask "KeePassXC-Browser"              "https://addons.mozilla.org/firefox/addon/keepassxc-browser/"
+ask "uBlock Origin"                  "https://addons.mozilla.org/firefox/addon/ublock-origin/"          "uBlock0@raymondhill.net"
+ask "ClearURLs"                      "https://addons.mozilla.org/firefox/addon/clearurls/"              "{72267eed-ffa2-467f-bd6e-08f34ba97e98}"
+ask "SponsorBlock"                   "https://addons.mozilla.org/firefox/addon/sponsorblock/"           "sponsorBlocker@ajay.app"
+ask "Multi-Account Containers"       "https://addons.mozilla.org/firefox/addon/multi-account-containers/" "@testpilot-containers"
+ask "KeePassXC-Browser"              "https://addons.mozilla.org/firefox/addon/keepassxc-browser/"      "keepassxc-browser@keepassxc.org"
 
 echo
 echo "  Done. Enjoy."
