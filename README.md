@@ -56,12 +56,11 @@ Both scripts:
 **Firefox (`firefox/user.js`)**
 1. Telemetry / health reports / usage ping off; Shield + Normandy disabled
    (no remote experiments, no pref-flipping, empty Normandy API URL).
-2. DNS over HTTPS, mode 3 (strict — no plain-DNS fallback), NextDNS endpoint,
-   no excluded domains, DNS prefetch off.
+2. DNS over HTTPS, mode 3 (strict — no plain-DNS fallback), NextDNS endpoint
+   with a Quad9 fallback URI (still DoH), no excluded domains, DNS prefetch off.
 3. No speculative/prefetch/preconnect traffic; no search suggestions.
-4. Global Privacy Control on; ETP standard; fingerprinting protection on,
-   first-party isolation on; sites can't read clipboard events; shutdown
-   sanitization.
+4. Global Privacy Control on; ETP standard; fingerprinting protection on;
+   sites can't read clipboard events; shutdown sanitization.
 
 5. New-tab page: no sponsored top sites, no discovery stream, no CFR nudges.
 6. Search: no suggestions, no query echo in the address bar; search results
@@ -70,7 +69,9 @@ Both scripts:
    Relay, no form autofill (use KeePassXC-Browser instead).
 8. HTTPS-only mode.
 9. Downloads: always ask where; delete history in private windows.
-10. Safe Browsing **off by choice** — see tradeoff below.
+10. Safe Browsing **on** — malware + phishing protection. Lookups are
+    hash-prefix based over HTTPS (full URLs never leave the browser), catching
+    brand-new bad URLs that static blocklists miss.
 11. Disk cache lives on a tmpfs ramdisk (`/mnt/ramdisk/firefox_cache`), so no
     cache trace survives a reboot. Installer warns if the mount is missing or
     isn't actually tmpfs.
@@ -102,13 +103,13 @@ Both scripts:
   so no Google "Optimization Guide" hint/model traffic. uBlock Origin is
   **built into Helium**; no install needed.
 
-## The Safe Browsing tradeoff
+## Safe Browsing
 
-`browser.safebrowsing.*` is off in Firefox. That means the browser does **not**
-send URL hashes to Google/Mozilla. Malicious-domain protection is delegated to
-your DNS resolver's security filters (e.g. NextDNS) plus uBlock Origin. If you
-don't trust your resolver's filtering, re-enable Safe Browsing — it's a
-deliberate, documented choice, not an oversight.
+`browser.safebrowsing.*` is **on**. Firefox checks URLs against Google/Mozilla
+malware and phishing lists using **hash prefixes** sent over HTTPS — full URLs
+never leave the browser. The cache plus rate-limiting keeps the actual
+disclosure tiny, and it catches brand-new phishing URLs that static lists
+(NextDNS, uBlock) lag behind on. Those two layers still sit on top.
 
 ## Caveats / gotchas
 

@@ -23,11 +23,14 @@ user_pref("browser.discovery.enabled", false);
 
 /**********************************************************************
  * 2. DNS - encrypted, strict, no ISP peeking
- *  NextDNS over HTTPS, DoH-only (no fallback to plain DNS).
+ *  NextDNS over HTTPS, DoH-only (no fallback to plain DNS). If the primary
+ *  resolver is unreachable, Firefox still resolves via the fallback URI
+ *  (also DoH), so one outage doesn't take down your whole connection.
  *  Change network.trr.uri to your own resolver if you use one.
  **********************************************************************/
 user_pref("network.trr.mode", 3);                       // 3 = DoH only
 user_pref("network.trr.uri", "https://firefox.dns.nextdns.io/");
+user_pref("network.trr.fallback-uri", "https://dns.quad9.net/dns-query");
 user_pref("network.trr.excluded-domains", "");          // no bypasses
 user_pref("network.dns.disablePrefetch", true);
 
@@ -51,9 +54,6 @@ user_pref("browser.contentblocking.category", "standard");
 
 // Fingerprinting protection (on top of the ETP level above).
 user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
-
-// First-party isolation: no cross-domain cookie/storage sharing.
-user_pref("privacy.firstparty.isolate", true);
 
 // No clipboard read events for sites (pasting still works; reading is blocked).
 user_pref("dom.event.clipboardevents.enabled", false);
@@ -115,13 +115,13 @@ user_pref("browser.download.useDownloadDir", false);
 user_pref("browser.download.deletePrivate", true);
 
 /**********************************************************************
- * 10. SAFE BROWSING - OFF (by choice)
- *  We opt out: the browser sends NO URL hashes to Google/Mozilla.
- *  Malicious-domain protection is handled by your DNS resolver
- *  (e.g. NextDNS security filters). uBlock covers the rest.
+ * 10. SAFE BROWSING - ON
+ *  Lookups are hash-prefix based over HTTPS (no full URLs are sent) and
+ *  catch brand-new phishing/malware URLs that static blocklists can't.
+ *  DNS filtering + uBlock still sit on top as a second layer.
  **********************************************************************/
-user_pref("browser.safebrowsing.malware.enabled", false);
-user_pref("browser.safebrowsing.phishing.enabled", false);
+user_pref("browser.safebrowsing.malware.enabled", true);
+user_pref("browser.safebrowsing.phishing.enabled", true);
 
 /**********************************************************************
  * 11. RAM CACHE - disk cache lives on a tmpfs, dies with the reboot
